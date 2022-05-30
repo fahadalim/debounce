@@ -1,0 +1,63 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handle(main,1000)">kdahn</button>
+</body>
+<script>
+    var timer;
+    function main(){
+        console.log("clicked")
+    }
+        function handle(main,delay){
+            if(timer){
+                clearTimeout(timer)
+            }
+            timer= setTimeout(()=>{
+                main()
+            },delay)
+        
+        }
+</script>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+<title>
+	Throttling
+</title>
+</head>
+<body>
+<button id="throttle">Click Me</button>
+<script>
+	const btn=document.querySelector("#throttle");
+
+	const throttleFunction=(func, delay)=>{
+	var flag=true
+	return () => {
+      if(flag){
+        func()
+        flag=false
+      }
+      setTimeout(()=>{
+        
+          flag=true
+      },delay)
+	}
+	}
+	btn.addEventListener("click", throttleFunction(()=>{
+	console.log("button is clicked")
+	}, 1500));
+</script>
+</body>
+</html>
